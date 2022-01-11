@@ -1,0 +1,522 @@
+[
+    {
+        "id": "faec17d9a2db5be7",
+        "type": "tab",
+        "label": "Raspberry-Pi and Azure IoT Hub",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "95d1837c6061c8e8",
+        "type": "tab",
+        "label": "UI-Dashboard-Flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "62eb4afcf1efe4cc",
+        "type": "hue-bridge",
+        "name": "Philips hue",
+        "bridge": "192.168.178.22",
+        "key": "pmkOk1nYxcyP6RtdkgMPwtvWOKKUfDfKbDbtKG5m",
+        "autoupdates": true,
+        "disableupdates": false
+    },
+    {
+        "id": "e15860fe78f5bbe5",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "5f2a4a123a6f368d",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD.MM.YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "9b29dde88f588ccc",
+        "type": "ui_group",
+        "name": "Dashboard",
+        "tab": "0c7f95faa4b7d1c8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0c7f95faa4b7d1c8",
+        "type": "ui_tab",
+        "name": "Steuerung",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "0632b1e96836d08b",
+        "type": "inject",
+        "z": "faec17d9a2db5be7",
+        "name": "Light off",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"on\":false,\"brightness\":0,\"color\":\"red\"}",
+        "payloadType": "json",
+        "x": 120,
+        "y": 920,
+        "wires": [
+            [
+                "1820421e1463af6e"
+            ]
+        ]
+    },
+    {
+        "id": "990d5a1c463779c4",
+        "type": "azureiothubreceiver",
+        "z": "faec17d9a2db5be7",
+        "name": "Azure IoT Hub Receiver",
+        "x": 140,
+        "y": 420,
+        "wires": [
+            [
+                "548037b64e7b9431"
+            ]
+        ]
+    },
+    {
+        "id": "548037b64e7b9431",
+        "type": "debug",
+        "z": "faec17d9a2db5be7",
+        "name": "IoT Hub Receiver Debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "7afdfc1eeec8b820",
+        "type": "rpi-dht22",
+        "z": "faec17d9a2db5be7",
+        "name": "DHT11 Sensor",
+        "topic": "rpi-dht11",
+        "dht": "11",
+        "pintype": "0",
+        "pin": 4,
+        "x": 340,
+        "y": 660,
+        "wires": [
+            [
+                "d5c6db274b12b754",
+                "65a428ad1e817df0",
+                "cbebd93ec1acb009",
+                "924b5589a281b996",
+                "0e69a77d3b5c226d"
+            ]
+        ]
+    },
+    {
+        "id": "d5c6db274b12b754",
+        "type": "function",
+        "z": "faec17d9a2db5be7",
+        "name": "Color Calculation",
+        "func": "var temp = msg.payload;\nvar hum = msg.humidity;\nvar res;\n\nif (temp >= 25) {\n  msg.payload = \"red\";\n} else if (hum >= 50) {\n  msg.payload = \"blue\";\n} else {\n  msg.payload = \"yellow\";\n}\n\nmsg.humidity = \"\"\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 660,
+        "wires": [
+            [
+                "5bf0ec929fe3ed51",
+                "7495cdacb177ad6c"
+            ]
+        ]
+    },
+    {
+        "id": "5bf0ec929fe3ed51",
+        "type": "debug",
+        "z": "faec17d9a2db5be7",
+        "name": "Color Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "8538dc8be88d2b26",
+        "type": "inject",
+        "z": "faec17d9a2db5be7",
+        "name": "Start Flow",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 660,
+        "wires": [
+            [
+                "7afdfc1eeec8b820"
+            ]
+        ]
+    },
+    {
+        "id": "1820421e1463af6e",
+        "type": "hue-light",
+        "z": "faec17d9a2db5be7",
+        "name": "Hue lightstrip Office",
+        "bridge": "62eb4afcf1efe4cc",
+        "lightid": "5190611e-b290-4632-a04f-4ad40f16df12",
+        "colornamer": true,
+        "skipevents": false,
+        "initevents": false,
+        "x": 860,
+        "y": 740,
+        "wires": [
+            [
+                "8ef9a31dbcece495"
+            ]
+        ]
+    },
+    {
+        "id": "7495cdacb177ad6c",
+        "type": "function",
+        "z": "faec17d9a2db5be7",
+        "name": "Hue Payload",
+        "func": "msg.payload = {\"on\":true,\"brightness\":100,\"color\": msg.payload}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 740,
+        "wires": [
+            [
+                "1820421e1463af6e"
+            ]
+        ]
+    },
+    {
+        "id": "ed55316a9b903558",
+        "type": "azureiothub",
+        "z": "faec17d9a2db5be7",
+        "name": "Azure IoT Hub",
+        "protocol": "amqp",
+        "x": 340,
+        "y": 820,
+        "wires": [
+            [
+                "97354e8bc4741aaf"
+            ]
+        ]
+    },
+    {
+        "id": "97354e8bc4741aaf",
+        "type": "debug",
+        "z": "faec17d9a2db5be7",
+        "name": "IoT Hub Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "65a428ad1e817df0",
+        "type": "function",
+        "z": "faec17d9a2db5be7",
+        "name": "IoT Hub Payload",
+        "func": "msg.payload = {\"deviceId\":\"Raspberry-Pi-Hannes\",\"key\":\"HostName=iot-project-kfru-hub.azure-devices.net;DeviceId=Raspberry-Pi-Hannes;SharedAccessKey=cqTWYCqjXegIoLS2inkMvUzgw9Z4fJE7ajU7+MyidWw=\",\"protocol\":\"amqp\",\"data\": {temp: msg.payload, hum: msg.humidity}}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 740,
+        "wires": [
+            [
+                "ed55316a9b903558"
+            ]
+        ]
+    },
+    {
+        "id": "cbebd93ec1acb009",
+        "type": "debug",
+        "z": "faec17d9a2db5be7",
+        "name": "DHT11 Debug Temp",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "8ef9a31dbcece495",
+        "type": "debug",
+        "z": "faec17d9a2db5be7",
+        "name": "Light Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.on",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "924b5589a281b996",
+        "type": "debug",
+        "z": "faec17d9a2db5be7",
+        "name": "DHT11 Debug Humidity",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "humidity",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "0e69a77d3b5c226d",
+        "type": "link out",
+        "z": "faec17d9a2db5be7",
+        "name": "Link to Dashboard",
+        "mode": "link",
+        "links": [
+            "f8196855e28aa34d"
+        ],
+        "x": 935,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "2cd8cbf56e07af49",
+        "type": "ui_gauge",
+        "z": "95d1837c6061c8e8",
+        "name": "Temperature Gauge",
+        "group": "9b29dde88f588ccc",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatur",
+        "label": "Grad",
+        "format": "{{msg.payload}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "20",
+        "seg2": "25",
+        "className": "",
+        "x": 310,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "f8196855e28aa34d",
+        "type": "link in",
+        "z": "95d1837c6061c8e8",
+        "name": "",
+        "links": [
+            "0e69a77d3b5c226d"
+        ],
+        "x": 75,
+        "y": 160,
+        "wires": [
+            [
+                "2cd8cbf56e07af49",
+                "35fa9ef0dcb126ea",
+                "f43f7717d023ee6f"
+            ]
+        ]
+    },
+    {
+        "id": "35fa9ef0dcb126ea",
+        "type": "file",
+        "z": "95d1837c6061c8e8",
+        "name": "",
+        "filename": "DHT-Data",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 290,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f43f7717d023ee6f",
+        "type": "ui_gauge",
+        "z": "95d1837c6061c8e8",
+        "name": "Humidity Gauge",
+        "group": "9b29dde88f588ccc",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "Percent Humidity",
+        "format": "{{msg.humidity}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "35",
+        "seg2": "55",
+        "className": "",
+        "x": 300,
+        "y": 200,
+        "wires": []
+    }
+]
